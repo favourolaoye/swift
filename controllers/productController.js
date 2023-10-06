@@ -3,6 +3,7 @@ const items = require("../models/productSchema.js");
 
 const getProducts = asynchandler(async(req, res) => {
     const item = await items.find();
+    res.status(200).json({message: "fetched an item"});
     console.log(item);
     if(!item){
         res.status(400)
@@ -30,7 +31,7 @@ const CreateProduct = asynchandler(async(req, res) => {
     const item = await items.create({
         name, Quantity, price
     });
-    res.status(201);
+    res.status(201).json({message: "created an item"});
 });
 
 const EditProduct = asynchandler(async(req, res) => {
